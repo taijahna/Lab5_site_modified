@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Клуб настільних ігор</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        header {
+            background-color: #009dff;
+            color: #fff;
+            padding: 15px;
+            text-align: center;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #f2f2f2;
+            padding: 10px;
+        }
+
+        .menu-item {
+            margin: 0 15px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .menu-item a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .menu-item a:hover {
+            color: #0056b3;
+        }
+
+        .menu-item-underline {
+            text-decoration: underline;
+        }
+
+        a[href="#Каталог"] {
+            background-color: yellow;
+        }
+
+        .content {
+            padding: 20px;
+        }
+
+        .content p {
+            color: blue;
+        }
+
+        .content ul {
+            list-style-type: disc;
+            margin: 20px 0;
+            padding-left: 40px;
+        }
+
+        .content ol {
+            list-style-type: decimal;
+            margin: 20px 0;
+            padding-left: 40px;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        #contact-modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #009dff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            z-index: 9999;
+        }
+
+        .modal-content {
+            margin: 15px 0;
+        }
+
+        button {
+            background-color: #009dff;
+            color: #fff;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #007acc;
+        }
+
+        img {
+            width: 100%;
+            max-width: 300px;
+            height: auto;
+            margin: 10px;
+        }
+
+        /* Слайд-шоу */
+        .slideshow-container {
+            position: relative;
+            max-width: 100%;
+            margin: auto;
+            overflow: hidden;
+            border-radius: 10px;
+        }
+
+        .slide {
+            display: none;
+        }
+
+        .slide img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .fade {
+            -webkit-animation-name: fade;
+            -webkit-animation-duration: 1.5s;
+            animation-name: fade;
+            animation-duration: 1.5s;
+        }
+
+        @-webkit-keyframes fade {
+            from {opacity: .4} 
+            to {opacity: 1}
+        }
+
+        @keyframes fade {
+            from {opacity: .4} 
+            to {opacity: 1}
+        }
+
+        /* Flexbox and Grid */
+        .game-gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+
+        .game-gallery img {
+            flex: 1 1 calc(33% - 20px);
+            margin: 10px;
+            max-width: 300px;
+        }
+
+        .advantages, .services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .advantage, .service {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .advantage p, .service p {
+            margin: 10px 0;
+        }
+
+        .highlight {
+            background-color: yellow;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Клуб настільних ігор</h1>
+    </header>
+
+    <nav>
+        <div class="menu-item"><a href="#Каталог">Каталог</a></div>
+        <div class="menu-item"><a href="#">Магазини</a></div>
+        <div class="menu-item"><a href="#">Про нас</a></div>
+        <div class="menu-item"><a href="#">Події</a></div>
+        <div class="menu-item"><a href="#" class="menu-item-underline" onclick="openContactModal()">Контакти</a></div>
+        <div class="menu-item"><a href="#">Кошик</a></div>
+    </nav>
+
+    <div id="contact-modal">
+        <p class="modal-content">Номер телефона: +3801113245</p>
+        <p class="modal-content">Email: boardgames@gmail.com</p>
+        <p class="modal-content">Адрес: Київ, вул. Машинобудівна, 19</p>
+        <button onclick="closeContactModal()">Закрити</button>
+    </div>
+
+    <div class="content">
+        <p style="font-weight: bold; font-size: 3em; margin-bottom: 2px;">Board Games Club</p>
+        <p style="font-size: 1.5em; margin-bottom: 2px;">Настільні ігри на будь-який смак</p>
+        <i style="margin-bottom: 40px;">Запрошуємо вас поринути у світ настільних ігор! У нас ви знайдете гри для всієї родини, друзів та колег. 
+            <br></br> Також у вас є можливість відвідати ігротеки, про поведення яких ми будемо інформувати вас на нашому сайті.</i>
+
+        <p style="font-weight: bold; font-size: 2em; margin-top: 60px;">Популярні ігри</p>
+
+        <div class="game-gallery">
+            <img src="game1.png" alt="Game 1">
+            <img src="game2.png" alt="Game 2">
+            <img src="game3.png" alt="Game 3">
+            <img src="game4.png" alt="Game 4">
+            <img src="game5.png" alt="Game 5">
+            <img src="game6.png" alt="Game 6">
+            <img src="game7.jpg" alt="Game 7">
+            <img src="game8.jpg" alt="Game 8">
+        </div>
+
+        <p style="font-weight: bold; font-size: 2em; margin-top: 60px;">Наші переваги</p>
+        <div class="advantages">
+            <div class="advantage">
+                <p style="font-weight: bold; font-size: 1.5em; margin-bottom: 5px;">Широкий асортимент</p>
+                <p>Ми пропонуємо більше 500 різних настільних ігор на будь-який смак та вік. Від класичних шахів до сучасних стратегій та кооперативних ігор.</p>
+            </div>
+            <div class="advantage">
+                <p style="font-weight: bold; font-size: 1.5em; margin-bottom: 5px;">Гарантія якості</p>
+                <p>Всі наші ігри сертифіковані та відповідають стандартам якості. Ми співпрацюємо тільки з перевіреними виробниками.</p>
+            </div>
+            <div class="advantage">
+                <p style="font-weight: bold; font-size: 1.5em; margin-bottom: 5px;">Швидка доставка</p>
+                <p>Ми здійснюємо доставку по всій Україні в найкоротші терміни. Зробіть замовлення зараз і отримайте свою гру вже завтра!</p>
+            </div>
+        </div>
+
+        <p style="font-weight: bold; font-size: 2em; margin-top: 60px;">Основні послуги</p>
+        <div class="services">
+            <div class="service">
+                <p style="font-weight: bold; font-size: 1.5em; margin-bottom: 5px;">Продаж настільних ігор</p>
+                <p>Великий вибір настільних ігор для будь-якого віку і смаку</p>
+                <p class="highlight">від 400 ₴</p>
+            </div>
+            <div class="service">
+                <p style="font-weight: bold; font-size: 1.5em; margin-bottom: 5px;">Прокат ігор</p>
+                <p>Можливість взяти гру напрокат на декілька днів</p>
+                <p class="highlight">від 200 ₴/день</p>
+            </div>
+            <div class="service">
+                <p style="font-weight: bold; font-size: 1.5em; margin-bottom: 5px;">Організація ігрових вечорів</p>
+                <p>Проведення ігрових заходів для компаній та сімей</p>
+                <p class="highlight">500 ₴ з людини</p>
+            </div>
+            <div class="service">
+                <p style="font-weight: bold; font-size: 1.5em; margin-bottom: 5px;">Консультація та рекомендації</p>
+                <p>Допомога у виборі гри та консультації з правил</p>
+                <p class="highlight">безкоштовно</p>
+            </div>
+        </div>
+
+        <p style="font-weight: bold; font-size: 2em; margin-top: 60px;">Акції дня</p>
+        <img src="discount.png" alt="Discount" style="width: 60%; height: auto;">
+        <ul>
+            <li>Знижка 20% на всі ігри (діє до 30.06.24)</li>
+            <li>Покупка 2 ігор за ціною однієї (з 01.05 до 15.05)</li>
+        </ul>
+
+        <p style="font-weight: bold; font-size: 2em; margin-top: 60px;">Список ігор для початківців</p>
+        <ol>
+            <li>Каркассон</li>
+            <li>Колонізатори</li>
+            <li>Тікет ту райд</li>
+            <li>Діксіт</li>
+            <li>7 Чудес</li>
+        </ol>
+
+        <p style="font-weight: bold; font-size: 2em; margin-top: 60px;">Слайд-шоу популярних ігор</p>
+        <div class="slideshow-container">
+            <div class="slide fade">
+                <img src="game1.png" alt="Game 1" class="slide-image">
+            </div>
+            <div class="slide fade">
+                <img src="game2.png" alt="Game 2" class="slide-image">
+            </div>
+            <div class="slide fade">
+                <img src="game3.png" alt="Game 3" class="slide-image">
+            </div>
+            <div class="slide fade">
+                <img src="game4.png" alt="Game 4" class="slide-image">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openContactModal() {
+            document.getElementById('contact-modal').style.display = 'block';
+        }
+
+        function closeContactModal() {
+            document.getElementById('contact-modal').style.display = 'none';
+        }
+
+        let slideIndex = 0;
+        const slideDuration = 3000; // Час між переключеннями в мілісекундах (3 секунди)
+
+        function showSlides() {
+            const slides = document.getElementsByClassName("slide");
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none"; 
+            }
+            slideIndex++;
+            if (slideIndex > slides.length) {slideIndex = 1} 
+            slides[slideIndex - 1].style.display = "block"; 
+            setTimeout(showSlides, slideDuration); // Змінює зображення кожні 3 секунди
+        }
+
+        window.onload = function() {
+            showSlides();
+        }
+    </script>
+</body>
+</html>
